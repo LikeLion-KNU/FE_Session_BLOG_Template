@@ -1,23 +1,23 @@
 import styles from "./NavBar.module.css";
-
+import { NavLink } from "react-router-dom";
 export const NavBar = () => {
-    return (
-        <nav className={styles.nav_wrapper}>
-            <ul className={styles.nav_container}>
-                <li>
-                    <a href="/">MY BLOG</a>
-                </li>
+  return (
+    <nav className={styles.nav_wrapper}>
+      <ul className={styles.nav_container}>
+        <li>
+          <NavLink to="/">MY BLOG</NavLink>
+        </li>
 
-                <li style={{ flexGrow: 1 }} />
+        <li style={{ flexGrow: 1 }} />
 
-                <li>
-                    <a href="/">글 목록</a>
-                </li>
+        <li>
+          <NavLink to="/">글 목록</NavLink>
+        </li>
 
-                <li>
-                    <a href="/post/new">글작성</a>
-                </li>
-            </ul>
-        </nav>
-    );
+        <li>
+          <NavLink to="/post/new">글작성</NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
 };
