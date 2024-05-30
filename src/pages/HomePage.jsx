@@ -1,46 +1,25 @@
-import { useEffect, useState } from "react";
-import { Card, CardSkeleton } from "../components/Card";
+import { Suspense } from 'react';
+import { Card, CardSkeleton } from '../components/Card';
+import { useQuery } from 'react-query';
 
 export default function HomePage() {
-  const [isPending, setIsPending] = useState(false);
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    setIsPending(true);
-    fetch("http://localhost:8080/posts")
-      .then((response) => {
-        return response.json();
-      })
-      .then((posts) => {
-        setPosts(posts);
-      })
-      .finally(() => {
-        setIsPending(false);
-      });
-  }, []);
+  const { data: posts, isPending } = useQuery([], () =>
+    fetch('http://localhost:8080/posts').then((res) => res.json()),
+  );
 
   return (
-    <>
-      {isPending ? (
+    <Suspense
+      isPending={isPending}
+      fallback={
         <>
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
+          {new Array(4).map((i) => (
+            <CardSkeleton key={i} />
+          ))}
         </>
-      ) : (
-        posts.map((post) => {
-          return (
-            <Card
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              author={post.author}
-              likes={post.likes}
-              createdAt={post.createdAt}
-            />
-          );
-        })
-      )}
-    </>
+      }>
+      {posts?.map((post) => {
+        return <Card key={post.id} {...post} />;
+      })}
+    </Suspense>
   );
 }
