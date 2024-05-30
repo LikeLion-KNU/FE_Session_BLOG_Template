@@ -1,0 +1,55 @@
+/* Loading.module.css */
+.loading_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #f0f0f0; 
+}
+
+.loading_wrapper h1 {
+    font-size: 2em; 
+    font-weight: bold; 
+    color: #333;
+    animation: pulse 1.5s infinite; 
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.loading_bar_container {
+    width: 80%;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.loading_bar {
+    width: 0;
+    height: 100%;
+    background-color: pink;
+    border-radius: 10px 0 0 10px;
+    animation: loading 5s linear forwards;
+}
+
+
+@keyframes loading {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}

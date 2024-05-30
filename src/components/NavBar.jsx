@@ -1,21 +1,22 @@
 import styles from "./NavBar.module.css";
+import { Link } from "react-router-dom";
 
 export const NavBar = () => {
     return (
         <nav className={styles.nav_wrapper}>
             <ul className={styles.nav_container}>
                 <li>
-                    <a href="/">MY BLOG</a>
+                    <Link to={"/"}>Soeun Nam's Blog</Link>
                 </li>
 
                 <li style={{ flexGrow: 1 }} />
 
                 <li>
-                    <a href="/">글 목록</a>
+                    <Link to={"/"}>home</Link>
                 </li>
 
                 <li>
-                    <a href="/post/new">글작성</a>
+                    <Link to={"/post/new"}>post</Link>
                 </li>
             </ul>
         </nav>

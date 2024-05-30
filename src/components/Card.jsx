@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./Card.module.css";
 
-export const Card = ({ title, author, likes, createdAt }) => {
+export const Card = ({ id, title, author, likes, createdAt }) => {
+    const navigate = useNavigate();
+
     return (
-        <div className={styles.card_wrapper}>
+        <div className={styles.card_wrapper} onClick={()=> navigate(`posts/${id}`)}>
             <h3 className={styles.card_head}>
                 <span>{title}</span>
                 <span>❤️ {likes}</span>
