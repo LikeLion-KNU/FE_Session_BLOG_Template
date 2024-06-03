@@ -1,0 +1,44 @@
+.post_wrapper {
+	width: min(100%, 900px);
+  
+	margin: 20px auto;
+	padding: 20px;
+  
+	box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.2);
+}
+.post_auth {
+	display: flex;
+	gap: 10px;
+	align-items: end;
+	margin: 2px 0px;
+}
+.post_auth > span:first-child {
+	font-weight: bold;
+}
+.post_auth > span:last-child {
+	color: grey;
+	font-size: 14px;
+}
+.post_content {
+	margin: 30px 0px;
+	padding: 20px 0px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.post_wrapper > button {
+	position: relative;
+	left: 88%;
+	width: 100px;
+	padding: 5px 0px;
+	border: 1px solid #303030;
+	border-radius: 5px;
+	color: #303030;
+	background-color: white;
+}
+.post_wrapper > button:hover {
+	background-color: #44559940;
+	border: 1px solid #303030;
+	transition: 0.5s;
+	cursor: pointer;
+}
