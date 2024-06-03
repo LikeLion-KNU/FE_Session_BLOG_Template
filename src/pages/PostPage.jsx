@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Post } from "../components/Post";
 import { useParams } from "react-router-dom";
+import { LinearProgress } from "@mui/material";
 
 export default function PostPage() {
   const [isPending, setIsPending] = useState(false);
@@ -23,7 +24,8 @@ export default function PostPage() {
     <>
       {isPending ? (
         <>
-          <p>로딩중 ...</p>
+          {/* 로딩텍스트 대신 프로그레스 바 추가 */}
+          <LinearProgress />
         </>
       ) : (
         <Post
