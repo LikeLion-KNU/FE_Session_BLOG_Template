@@ -19,7 +19,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
+    <div style={{display: "flex", flexWrap: "wrap", justifyContent: "left", alignItems: "left", maxWidth: "1050px", margin: "30px auto 30px auto"}}>
       {isPending ? (
         <>
           <CardSkeleton />
@@ -28,19 +28,22 @@ export default function HomePage() {
           <CardSkeleton />
         </>
       ) : (
-        posts.map((post) => {
-          return (
-            <Card
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              author={post.author}
-              likes={post.likes}
-              createdAt={post.createdAt}
-            />
-          );
-        })
+        <>
+          {posts.map((post) => {
+            return (
+              <Card
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                content={post.content}
+                author={post.author}
+                likes={post.likes}
+                createdAt={post.createdAt}
+              />
+            );
+          })}
+        </>
       )}
-    </>
+    </div>
   );
 }
