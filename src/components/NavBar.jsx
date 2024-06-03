@@ -5,6 +5,9 @@ export const NavBar = () => {
     <nav className={styles.nav_wrapper}>
       <ul className={styles.nav_container}>
         <li>
+          <NavLink to={-1}>뒤로</NavLink>
+        </li>
+        <li>
           <NavLink to="/">MY BLOG</NavLink>
         </li>
 
