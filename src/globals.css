@@ -17,5 +17,6 @@ a:visited {
     color: #fff;
 }
 
-#root {
+body {
+    background-color: #F4EBE2;
 }
