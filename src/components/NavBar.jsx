@@ -16,7 +16,7 @@ export const NavBar = () => {
                 </li>
 
                 <li>
-                <Link to="/posts/new">글 목록</Link>
+                <Link to="/posts/new">새 글 쓰기</Link>
                 </li>
             </ul>
         </nav>
