@@ -19,3 +19,26 @@ a:visited {
 
 #root {
 }
+
+.loading-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #0002;
+    position: fixed;
+}
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+.loading-content {
+    animation: rotate 1s linear infinite;
+}

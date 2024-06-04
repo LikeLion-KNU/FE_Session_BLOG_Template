@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { Card, CardSkeleton } from "../components/Card";
+import { Card } from "../components/Card";
+import { Pagination } from "antd";
 
 export default function HomePage() {
   const [isPending, setIsPending] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 3;
+
   useEffect(() => {
     setIsPending(true);
     fetch("http://localhost:8080/posts")
@@ -18,17 +22,25 @@ export default function HomePage() {
       });
   }, []);
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const paginatedPosts = posts.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
   return (
     <>
       {isPending ? (
-        <>
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
-          <CardSkeleton />
-        </>
+        <div className="loading-wrapper">
+          <div className="loading-content">
+            <p>로딩중...</p>
+          </div>
+        </div>
       ) : (
-        posts.map((post) => {
+        paginatedPosts.map((post) => {
           return (
             <Card
               key={post.id}
@@ -41,6 +53,20 @@ export default function HomePage() {
           );
         })
       )}
+      <div
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
+        <Pagination
+          current={currentPage}
+          pageSize={pageSize}
+          total={posts.length}
+          onChange={handlePageChange}
+        />
+      </div>
     </>
   );
 }
