@@ -19,3 +19,8 @@ a:visited {
 
 #root {
 }
+
+.wrapper {
+    padding: 30px;
+    border: 1px solid black;
+}
