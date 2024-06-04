@@ -4,6 +4,11 @@ import HomePage from "./pages/HomePage";
 import PostPage from "./pages/PostPage";
 import NewPostPage from "./pages/NewPostPage";
 
+import "dayjs/locale/ko";
+import dayjs from "dayjs";
+
+dayjs.locale("ko");
+
 export default function App() {
   return (
     <>

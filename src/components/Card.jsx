@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import "dayjs/locale/ko";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
 export const Card = ({ id, title, content, author, likes, createdAt }) => {
@@ -27,7 +25,7 @@ export const Card = ({ id, title, content, author, likes, createdAt }) => {
 
 export const CardSkeleton = () => {
     return (
-        <div className="w-full mx-auto my-5 p-5 rounded-2xl shadow cursor-pointer">
+        <div className="w-full mx-auto bg-white my-5 p-5 rounded-2xl shadow cursor-pointer">
             <div className="relative rounded bg-[#e0e0e0] overflow-hidden w-full h-4 mb-3 "></div>
             <div className="relative rounded bg-[#e0e0e0] overflow-hidden w-full h-4 mb-3 "></div>
             <div className="relative rounded bg-[#e0e0e0] overflow-hidden w-full h-4 mb-3 "></div>
