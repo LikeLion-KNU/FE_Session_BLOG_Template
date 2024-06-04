@@ -1,28 +1,36 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./Card.module.css";
+import "dayjs/locale/ko";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
-export const Card = ({ id, title, author, likes, createdAt }) => {
+dayjs.locale("ko");
+dayjs.extend(relativeTime);
+
+export const Card = ({ id, title, content, author, likes, createdAt }) => {
     const navigate = useNavigate();
 
     return (
-        <div className={styles.card_wrapper} onClick={() => navigate(`/posts/${id}`)}>
-            <h3 className={styles.card_head}>
-                <span>{title}</span>
-                <span>❤️ {likes}</span>
+        <div className="w-full bg-white p-5 rounded-2xl shadow cursor-pointer" onClick={() => navigate(`/posts/${id}`)}>
+            <h3 className="flex">
+                <div className="w-auto text-xl font-bold my-1 whitespace-nowrap overflow-hidden text-ellipsis">{title}</div>
             </h3>
 
-            <p>글쓴이 : {author}</p>
-            <p>작성일 : {createdAt}</p>
+            <div className="text-xs text-gray-500 pb-2">{author}</div>
+            <div className="text-gray-500 text-sm pb-3">{content}</div>
+            <div className="flex justify-between">
+                <div className="w-9 shrink-0 text-base">❤️ {likes}</div>
+                <div className="text-sm">{dayjs(createdAt).fromNow().toString()}</div>
+            </div>
         </div>
     );
 };
 
 export const CardSkeleton = () => {
     return (
-        <div className={styles.card_wrapper}>
-            <div className={`${styles.skeleton} ${styles.skeleton_head}`}></div>
-            <div className={`${styles.skeleton} ${styles.skeleton_text}`}></div>
-            <div className={`${styles.skeleton} ${styles.skeleton_text}`}></div>
+        <div className="w-full mx-auto my-5 p-5 rounded-2xl shadow cursor-pointer">
+            <div className="relative rounded bg-[#e0e0e0] overflow-hidden w-full h-4 mb-3 "></div>
+            <div className="relative rounded bg-[#e0e0e0] overflow-hidden w-full h-4 mb-3 "></div>
+            <div className="relative rounded bg-[#e0e0e0] overflow-hidden w-full h-4 mb-3 "></div>
         </div>
     );
 };

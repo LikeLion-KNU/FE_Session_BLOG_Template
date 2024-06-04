@@ -20,6 +20,7 @@ export default function HomePage() {
 
   return (
     <>
+      <div className="container mx-auto px-36 py-8 grid grid-cols-2 gap-5">
       {isPending ? (
         <>
           <CardSkeleton />
@@ -28,19 +29,21 @@ export default function HomePage() {
           <CardSkeleton />
         </>
       ) : (
-        posts.map((post) => {
+        posts.map(({id, title, content, author, likes, createdAt}) => {
           return (
             <Card
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              author={post.author}
-              likes={post.likes}
-              createdAt={post.createdAt}
+              key={id}
+              id={id}
+              title={title}
+              content={content}
+              author={author}
+              likes={likes}
+              createdAt={createdAt}
             />
           );
         })
       )}
+      </div>
     </>
   );
 }
