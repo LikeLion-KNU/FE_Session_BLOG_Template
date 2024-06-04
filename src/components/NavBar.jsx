@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import styles from "./NavBar.module.css";
 
 export const NavBar = () => {
     return (
-        <nav className={styles.nav_wrapper}>
-            <ul className={styles.nav_container}>
-                <li>
-                    <Link to="/">MY BOLD</Link>
+        <>
+        <div className="h-[60px]"/>
+
+        <nav className="w-full h-[60px] bg-[#303030] text-white fixed top-0">
+            <ul className="flex items-center gap-5 w-[80%] h-full mx-auto list-none">
+                <li className="text-2xl font-bold">
+                    <Link to="/">Blog</Link>
                 </li>
 
                 <li style={{ flexGrow: 1 }} />
@@ -20,5 +22,6 @@ export const NavBar = () => {
                 </li>
             </ul>
         </nav>
+        </>
     );
 };
